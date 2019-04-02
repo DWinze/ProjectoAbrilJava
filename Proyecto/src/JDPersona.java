@@ -1,29 +1,38 @@
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import java.awt.EventQueue;
 
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.BorderLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class JDPersona extends JDialog {
-
-	private final JPanel contentPanel = new JPanel();
+	private JPanel panel;
+	private JButton btnAlta;
+	private JButton btnBaja;
+	private JButton btnLimpiar;
+	private JButton btnAcceder;
+	private JButton btnSalir;
+	private JPanel panel_1;
+	private JLabel lblCodigo;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		try {
-			JDPersona dialog = new JDPersona();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					JDPersona dialog = new JDPersona();
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 	/**
@@ -31,50 +40,38 @@ public class JDPersona extends JDialog {
 	 */
 	public JDPersona() {
 		setBounds(100, 100, 450, 300);
-		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setLayout(new FlowLayout());
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		{
-			JLabel lblNewLabel = new JLabel("New label");
-			contentPanel.add(lblNewLabel);
-		}
-		{
-			JPanel panel = new JPanel();
-			contentPanel.add(panel);
-		}
-		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
-				JButton btnAlta = new JButton("Alta");
-				buttonPane.add(btnAlta);
-			}
-			{
-				JButton btnBaja = new JButton("Baja");
-				btnBaja.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-					}
-				});
-				buttonPane.add(btnBaja);
-			}
-			{
-				JButton btnLimpiar = new JButton("Limpiar");
-				
-				buttonPane.add(btnLimpiar);
-				
-			}
-			{
-				JButton btnSalir = new JButton("Salir");
-				btnSalir.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-					}
-				});
-			
-				buttonPane.add(btnSalir);
-			}
-		}
+		
+		panel = new JPanel();
+		getContentPane().add(panel, BorderLayout.SOUTH);
+		
+		btnAlta = new JButton("Alta");
+		panel.add(btnAlta);
+		
+		btnBaja = new JButton("Baja");
+		panel.add(btnBaja);
+		
+		btnLimpiar = new JButton("Limpiar");
+		panel.add(btnLimpiar);
+		
+		btnAcceder = new JButton("Acceder");
+		panel.add(btnAcceder);
+		
+		btnSalir = new JButton("Salir");
+		panel.add(btnSalir);
+		
+		panel_1 = new JPanel();
+		getContentPane().add(panel_1, BorderLayout.CENTER);
+		panel_1.setLayout(null);
+		
+		lblCodigo = new JLabel("Codigo");
+		lblCodigo.setBounds(155, 8, 33, 14);
+		panel_1.add(lblCodigo);
+		
+		textField = new JTextField();
+		textField.setBounds(198, 8, 74, 14);
+		panel_1.add(textField);
+		textField.setColumns(10);
+
 	}
 
 }
